@@ -71,10 +71,30 @@ router.delete('/:postID',auth ,async(req, res) => {
         if(!post) return res.status(400).json({msg: 'Post not found'});
         //check if user is post owner
         if(post.user.toString() !== req.user.id) return res.status(401).json({msg: 'Not authorized to Delete'});
-         res.send('Deletiin successful');
+        await post.remove()
+         res.send('Deletion successful');
     } catch (error) {
         console.log(error.message);
         if(error === 'ObjectId') return res.status(400).json({msg: 'Post not found'});
+        res.status(500).json({msg: 'Server error'});
+    }
+})
+
+//@route POST api/posts/likes/id
+//@desc  like post
+//@access Private
+router.put('/likes/:id', auth, async(req, res) => {
+    try {
+        const post = Post.findById(req.params.id);
+        //check if post already liked by user
+        if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0){
+            return res.status(400).json({msg: 'Post already liked'});
+        }
+        post.likes.unshift({user: req.user.id});
+        await post.save()
+         res.json(post.likes);
+    } catch (error) {
+        console.log(error.message);
         res.status(500).json({msg: 'Server error'});
     }
 })
