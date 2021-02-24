@@ -87,12 +87,13 @@ router.put('/likes/:id', auth, async(req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         //check if post already liked by user
-        if(post.likes.filter(like => like.user.toString() === req.user.id)){
+        if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0){
+            return  res.send('liked');
             //Dislike post
-            let likeIndex = post.likes.map(like => like.user).indexOf(req.user.id)
-            post.likes.splice(likeIndex, 1)
-            await post.save()
-            return res.json({msg: 'Post unliked'});
+            // let likeIndex = post.likes.map(item => item.user).indexOf(req.user.id)
+            // post.likes.splice(likeIndex, 1)
+            // await post.save()
+            // return res.json({msg: 'Post unliked now'});
         }
         //like post
         post.likes.unshift({user: req.user.id});
