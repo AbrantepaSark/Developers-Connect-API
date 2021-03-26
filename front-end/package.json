@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.6.0",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.0",
     "babel-loader": "8.1.0",
@@ -41,6 +42,7 @@
     "jest-resolve": "26.6.0",
     "jest-watch-typeahead": "0.6.1",
     "mini-css-extract-plugin": "0.11.3",
+    "moment": "^2.29.1",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
     "postcss-flexbugs-fixes": "4.2.1",
@@ -53,8 +55,13 @@
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.1",
     "react-dom": "^17.0.1",
+    "react-moment": "^1.1.1",
+    "react-redux": "^7.2.2",
     "react-refresh": "^0.8.3",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "8.0.2",
@@ -63,6 +70,7 @@
     "terser-webpack-plugin": "4.2.3",
     "ts-pnp": "1.2.0",
     "url-loader": "4.1.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4",
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.0",
@@ -92,6 +100,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:5000",
   "jest": {
     "roots": [
       "<rootDir>/src"
