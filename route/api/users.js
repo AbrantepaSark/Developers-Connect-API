@@ -57,6 +57,7 @@ router.post(
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
       //Save new User into database
+
       await user.save();
 
       const payload = {
@@ -67,7 +68,7 @@ router.post(
       jwt.sign(
         payload,
         config.get("jwtToken"),
-        { expiresIn: 360000 },
+        { expiresIn: 36000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
